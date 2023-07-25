@@ -1,0 +1,99 @@
+body{
+    margin: 10px;
+    background-color: black;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% 10%; /* top-bottom, left-right */
+    padding: 10px;
+    background-color: aliceblue;
+    border: 2px solid outset;
+    border-radius: 6px;
+}
+
+.container > .song-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    flex: 0.3;    
+    color: black;    
+}
+
+.container > .song-details > .song-pic{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.container > .song-details > .song-name{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.container > .song-details > .song-artist{
+    font-size: 15px;
+    font-weight: bold;
+    color: #f50;
+}
+
+.container > .audio-controls{
+    flex: 0.7;
+    margin: 20px;
+}
+
+.container > .audio-controls > .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.container  > .audio-controls > .buttons > .playpause-song{
+    color: #f50;
+}
+
+.container > .audio-controls > .buttons > .playpause-song, .prev-song, .next-song{
+    cursor: pointer;
+}
+
+.container > .audio-controls > .slider-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 0px 0px 0px;
+}
+
+.container > .audio-controls > .slider-container > .volume_slider{
+    margin: 0px 7px;
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.container > .audio-controls > .slider-container > .volume_slider::-webkit-slider-runnable-track {
+    height: 15px;
+    border-radius: 16px;
+    background: lightcyan;
+}
+
+.container > .audio-controls > .slider-container> .volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid #f50;
+    box-shadow: -307px 0 0 300px #f50;
+}

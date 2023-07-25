@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Simple Music Player</title>
+		<link rel="icon" type="image/png" href="./musical-note.png"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="module">
+            import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js';
+			
+			let song_list = [
+				{
+					name: "Night Owl",
+					artist: "Broke For Free",
+					image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+					path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
+				},
+				{
+					name: "Enthusiast",
+					artist: "Tours",
+					image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+					path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3"
+				},
+				{
+					name: "Shipping Lanes",
+					artist: "Chad Crouch",
+					image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+					path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
+				},
+			];
+
+			// song-details
+			let song_pic = document.querySelector(".song-pic");
+			let song_name = document.querySelector(".song-name");
+			let song_artist = document.querySelector(".song-artist");
+			let song_index = 0;
+
+			function loadSong(song_index){
+				song_pic.style.backgroundImage = "url(" + song_list[song_index].image + ")";
+				song_name.textContent = song_list[song_index].name;
+				song_artist.textContent = song_list[song_index].artist;
+
+				let curr_song = song_list[song_index].path;
+				const wavesurfer = WaveSurfer.create({
+						container: '.waveform',
+						waveColor: 'black',
+						progressColor: '#f50',
+						url: curr_song,
+						barWidth: 4,
+						responsive: true,
+						height: 90,
+						barRadius: 4
+				});
+
+				var playButton = document.querySelector('.playpause-song');
+				
+				playButton.onclick = function(){
+					wavesurfer.playPause();
+					if(wavesurfer.isPlaying()){
+						playButton.innerHTML = '<i class="fa fa-pause-circle fa-4x"></i>';
+					}
+					else{
+						playButton.innerHTML = '<i class="fa fa-play-circle fa-4x"></i>';
+					}
+
+					wavesurfer.on('finish', function(){
+						playButton.innerHTML = '<i class="fa fa-play-circle fa-4x"></i>';
+						wavesurfer.stop();
+					})
+				}
+
+				let volumeButton = document.querySelector('.adjust-volume');
+				var volumeSlider = document.querySelector('.volume_slider');
+				
+				volumeSlider.onchange = function(){
+					let volume = volumeSlider.value / 100;
+					wavesurfer.setVolume(volume);
+					if(volume == 0){
+						volumeButton.innerHTML = '<i class="fa fa-volume-off fa-2x"></i>';
+					}
+					else if(volume == 1){
+						volumeButton.innerHTML = '<i class="fa fa-volume-up fa-2x"></i>';
+					}
+					else{
+						volumeButton.innerHTML = '<i class="fa fa-volume-down fa-2x"></i>';
+					}
+					console.log(volume);
+				}
+
+				let next_btn = document.querySelector(".next-song");
+				let prev_btn = document.querySelector(".prev-song");
+
+				prev_btn.onclick = function(){
+					playButton.innerHTML = '<i class="fa fa-play-circle fa-4x"></i>';
+					wavesurfer.destroy();
+					if(song_index > 0){
+						song_index -= 1;
+					}
+					else{
+						song_index = song_list.length - 1;
+					}
+					loadSong(song_index);
+				}
+
+				next_btn.onclick = function(){
+					playButton.innerHTML = '<i class="fa fa-play-circle fa-4x"></i>';
+					wavesurfer.destroy();
+					if(song_index < song_list.length - 1){
+						song_index += 1;
+					}
+					else{
+						song_index = 0;
+					}
+					loadSong(song_index);
+				}
+			}
+
+			loadSong(song_index);	
+        </script>
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="song-details">
+				<div class="song-pic"></div>
+				<div class="song-name"></div>
+				<div class="song-artist"></div>
+			</div>
+			<div class="audio-controls">
+				<div class="waveform"></div>
+				<div class="buttons">
+					<div class="prev-song">
+						<i class="fas fa-step-backward fa-2x"></i>
+					</div>
+					<div class="playpause-song">
+						<i class="fa fa-play-circle fa-4x"></i>
+					</div>
+					<div class="next-song">
+						<i class="fas fa-step-forward fa-2x"></i>
+					</div>
+				</div>					
+				<div class="slider-container">
+					<div class="adjust-volume">
+						<i class="fa fa-volume-down fa-2x"></i>
+					</div>
+					<input type="range" min="0" max="100" value="50" class="volume_slider" style="width: 25%">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
