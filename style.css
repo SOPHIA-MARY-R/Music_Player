@@ -1,5 +1,6 @@
 body{
     margin: 10px;
+    color: white;
     background-color: black;
 }
 
@@ -7,9 +8,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10% 10%; /* top-bottom, left-right */
-    padding: 10px;
-    background-color: aliceblue;
+    margin: 7% 10%; /* top-bottom, left-right */
+    padding: 60px 70px;
     border: 2px solid outset;
     border-radius: 6px;
 }
@@ -20,27 +20,12 @@ body{
     justify-content: center;
     align-items: flex-start;
     padding: 10px;
-    flex: 0.3;    
-    color: black;    
-}
-
-.container > .song-details > .song-pic{
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    border-radius: 6px;
+    flex: 0.3;      
 }
 
 .container > .song-details > .song-name{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
-}
-
-.container > .song-details > .song-artist{
-    font-size: 15px;
-    font-weight: bold;
-    color: #f50;
 }
 
 .container > .audio-controls{
@@ -54,10 +39,6 @@ body{
     justify-content: center;
     padding: 10px;
     margin-top: 20px;
-}
-
-.container  > .audio-controls > .buttons > .playpause-song{
-    color: #f50;
 }
 
 .container > .audio-controls > .buttons > .playpause-song, .prev-song, .next-song{
@@ -83,17 +64,17 @@ body{
 }
 
 .container > .audio-controls > .slider-container > .volume_slider::-webkit-slider-runnable-track {
-    height: 15px;
+    height: 20px;
     border-radius: 16px;
-    background: lightcyan;
+    background: #f50;
 }
 
 .container > .audio-controls > .slider-container> .volume_slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none; 
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    border: 2px solid #f50;
-    box-shadow: -307px 0 0 300px #f50;
+    border: 2px solid white;
+    box-shadow: -307px 0 0 300px white;
 }
