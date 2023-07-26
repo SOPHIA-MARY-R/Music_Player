@@ -1,7 +1,10 @@
 body{
     margin: 10px;
-    color: white;
+    color: rgba(255, 85, 0, 0.76);
     background-color: black;
+    font-family: 'Gotham';
+    text-shadow: 3px 3px white;
+    /* color: ; */
 }
 
 .container{
@@ -11,7 +14,8 @@ body{
     margin: 7% 10%; /* top-bottom, left-right */
     padding: 60px 70px;
     border: 2px solid outset;
-    border-radius: 6px;
+    border-radius: 8px;
+    background: rgba(126, 125, 125, 0.6);
 }
 
 .container > .song-details{
@@ -26,6 +30,7 @@ body{
 .container > .song-details > .song-name{
     font-size: 50px;
     font-weight: bold;
+    text-shadow: 2px 2px white;
 }
 
 .container > .audio-controls{
@@ -66,7 +71,7 @@ body{
 .container > .audio-controls > .slider-container > .volume_slider::-webkit-slider-runnable-track {
     height: 20px;
     border-radius: 16px;
-    background: #f50;
+    background: white;
 }
 
 .container > .audio-controls > .slider-container> .volume_slider::-webkit-slider-thumb {
@@ -75,6 +80,6 @@ body{
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: -307px 0 0 300px white;
+    border: 2px solid rgba(255, 85, 0, 0.76);
+    box-shadow: -307px 0 0 300px rgba(255, 85, 0, 0.76);
 }

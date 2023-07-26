@@ -11,22 +11,22 @@
 			let song_list = [
 				{
 					name: "Darbar BGM",
-					image: "./assets/darbar.jpeg",
+					image: "./assets/darbar-transparent.png",
 					path: "./assets/Darbar-bgm.mp3"
 				},
 				{
 					name: "Chola Chola! BGM",
-					image: "./assets/chola-chola.png",
+					image: "./assets/chola-chola-transparent.png",
 					path: "./assets/Chola-Chola-Bgm.mp3"
 				},
 				{
 					name: "Shinu No Ga E Wa",
-					image: "./assets/fuji-kaze.jpg",
+					image: "./assets/fuji-kaze-transparent.png",
 					path: "./assets/Shinunoga-E-Wa.mp3"
 				},
 				{
 					name: "Only - Lee Hi",
-					image: "./assets/lee-hi.jpg",
+					image: "./assets/lee-hi-transparent.png",
 					path: "./assets/Only-Lee Hi.mp3"
 				},
 				{
@@ -36,7 +36,7 @@
 				},
 				{
 					name: "Stay With Me",
-					image: "./assets/goblin.jpg",
+					image: "./assets/goblin-transparent.png",
 					path: "./assets/Goblin-Stay-with-me.mp3"
 				}
 			];
@@ -51,7 +51,7 @@
 				let curr_song = song_list[song_index].path;
 				const wavesurfer = WaveSurfer.create({
 						container: '.waveform',
-						waveColor: '#ffff',
+						waveColor: 'white',
 						progressColor: '#f50',
 						url: curr_song,
 						barWidth: 4,
@@ -71,16 +71,16 @@
 				playButton.onclick = function(){
 					wavesurfer.playPause();
 					if(isPlaying){
-						playButton.innerHTML = '<i class="fa fa-pause-circle fa-6x"></i>';
+						playButton.innerHTML = '<i class="fa fa-pause-circle fa-7x"></i>';
 						isPlaying = false;
 					}
 					else{
-						playButton.innerHTML = '<i class="fa fa-play-circle fa-6x"></i>';
+						playButton.innerHTML = '<i class="fa fa-play-circle fa-7x"></i>';
 						isPlaying = true;
 					}
 
 					wavesurfer.on('finish', function(){
-						playButton.innerHTML = '<i class="fa fa-play-circle fa-6x"></i>';
+						playButton.innerHTML = '<i class="fa fa-play-circle fa-7x"></i>';
 						wavesurfer.stop();
 					})
 				}
@@ -107,7 +107,7 @@
 				let prev_btn = document.querySelector(".prev-song");
 
 				prev_btn.onclick = function(){
-					playButton.innerHTML = '<i class="fa fa-play-circle fa-6x"></i>';
+					playButton.innerHTML = '<i class="fa fa-play-circle fa-7x"></i>';
 					wavesurfer.destroy();
 					isPlaying = false;
 					if(song_index > 0){
@@ -120,7 +120,7 @@
 				}
 
 				next_btn.onclick = function(){
-					playButton.innerHTML = '<i class="fa fa-play-circle fa-6x"></i>';
+					playButton.innerHTML = '<i class="fa fa-play-circle fa-7x"></i>';
 					isPlaying = false;
 					wavesurfer.destroy();
 					if(song_index < song_list.length - 1){
@@ -149,7 +149,7 @@
 						<i class="fas fa-step-backward fa-4x"></i>
 					</div>
 					<div class="playpause-song">
-						<i class="fa fa-play-circle fa-6x"></i>
+						<i class="fa fa-play-circle fa-7x"></i>
 					</div>
 					<div class="next-song">
 						<i class="fas fa-step-forward fa-4x"></i>
